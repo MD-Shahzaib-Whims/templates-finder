@@ -50,7 +50,10 @@ const TemplatePreview = () => {
     const exportToPDF = () => {
         const pdf = new jsPDF();
 
+        // Add template image
         pdf.addImage(selectedTemplate.image, "JPEG", 15, 15, 180, 240);
+
+        // Add customized text
         pdf.setFontSize(16);
         pdf.text(
             formData.brideNames + " & " + formData.groomNames,
@@ -62,6 +65,8 @@ const TemplatePreview = () => {
         pdf.text(formData.date, 105, 120, { align: "center" });
         pdf.text(formData.venue, 105, 130, { align: "center" });
         pdf.text(formData.message, 105, 150, { align: "center" });
+
+        // Save the PDF
         pdf.save("wedding-invitation.pdf");
 
         toast({
@@ -78,6 +83,7 @@ const TemplatePreview = () => {
                 </Button>
 
                 <div className="grid gap-8 lg:grid-cols-2">
+                    {/* Preview Section */}
                     <div className="relative rounded-lg bg-white p-6 shadow-lg">
                         <div className="mb-4 flex justify-end gap-2">
                             <Button variant="outline" size="icon" onClick={() => handleZoom("out")} disabled={zoom <= 50}>
@@ -112,6 +118,7 @@ const TemplatePreview = () => {
                         </div>
                     </div>
 
+                    {/* Customization Section */}
                     <div className="space-y-6 rounded-lg bg-white p-6 shadow-lg">
                         <h2 className="font-playfair text-2xl font-semibold text-wedding-navy">
                             Customize Your Invitation
