@@ -16,7 +16,7 @@ const Page = () => {
             the perfect invitation for your special day
           </p>
           <Button
-            className="mt-8 bg-wedding-navy text-white hover:bg-wedding-navy/80"
+            className="mt-8 bg-slate-500 text-white hover:bg-slate-600"
             size="lg"
             onClick={() => document.getElementById("templates")?.scrollIntoView({ behavior: "smooth" })}
           >

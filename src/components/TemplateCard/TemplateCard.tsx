@@ -1,15 +1,26 @@
+import { useContext } from "react";
 import { Card } from "@/components/ui/card";
 import { Template } from "@/data/templates";
+import { TemplateContext } from "@/context";
+import { useRouter } from "next/navigation";
 
 interface TemplateCardProps extends Template {
-    onClick: () => void;
+    onClick?: () => void;
 }
 
-const TemplateCard = ({ title, image, category, description, onClick }: TemplateCardProps) => {
+const TemplateCard = ({ id, title, image, category, description }: TemplateCardProps) => {
+    const router = useRouter();
+    const { setSelectedTemplate } = useContext(TemplateContext);
+
+    const handleClick = () => {
+        setSelectedTemplate({ id, title, image, category, description });
+        router.push(`/template-preview/${id}`);
+    };
+
     return (
         <Card
             className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-lg"
-            onClick={onClick}
+            onClick={handleClick}
         >
             <div className="aspect-[3/4] overflow-hidden">
                 <img
