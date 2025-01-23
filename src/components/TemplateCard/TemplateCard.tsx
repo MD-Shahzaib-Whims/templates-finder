@@ -1,3 +1,4 @@
+"use client"
 import { useContext } from "react";
 import { Card } from "@/components/ui/card";
 import { Template } from "@/data/templates";
